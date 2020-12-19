@@ -40,4 +40,10 @@ public class ImageMigrationController {
         Integer integer = imageTempService.insertImageTemp(imageTemp);
         return integer;
     }
+
+    @GetMapping("migration")
+    public String migration(String url) {
+
+        return null;
+    }
 }
