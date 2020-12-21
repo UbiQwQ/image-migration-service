@@ -23,7 +23,7 @@ public class ImageTempServiceImpl implements ImageTempService {
     ImageTempMapper imageTempMapper;
 
     @Autowired
-    private RocketMQTemplate rocketMQTemplate;
+    private RocketMQTemplate rocketMqTemplate;
 
 
     @Override
@@ -40,7 +40,7 @@ public class ImageTempServiceImpl implements ImageTempService {
 
     @Override
     public String migration(String url) {
-        rocketMQTemplate.syncSend("migration", url);
+        rocketMqTemplate.syncSend("migration", url);
         return "success";
     }
 }
