@@ -2,6 +2,7 @@ package cn.wuyi.migration.consumer;
 
 import cn.wuyi.migration.pojo.entity.ImageTemp;
 import cn.wuyi.migration.service.ImageTempService;
+import cn.wuyi.migration.util.UrlUtil;
 import org.apache.rocketmq.spring.annotation.ConsumeMode;
 import org.apache.rocketmq.spring.annotation.MessageModel;
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
@@ -34,10 +35,12 @@ public class ImageMigrationConsumer implements RocketMQListener<String> {
         String newUrl = "newUrl";
         //刷盘持久化
         ImageTemp imageTemp = new ImageTemp();
-        imageTemp.setNewHash("newHash");
+        String newHsah = UrlUtil.getUrlUuid(newUrl);
+        String oldHash = UrlUtil.getUrlUuid(url);
         imageTemp.setNewUrl(newUrl);
-        imageTemp.setOldHash("oldHash");
+        imageTemp.setNewHash(newHsah);
         imageTemp.setOldUrl(url);
+        imageTemp.setOldHash(oldHash);
         imageTempService.insertImageTemp(imageTemp);
     }
 }
