@@ -13,4 +13,6 @@ public interface ImageTempService {
     ImageTemp getImageTempByPrimaryKey(Integer id);
 
     Integer insertImageTemp(ImageTemp imageTemp);
+
+    String migration(String url);
 }

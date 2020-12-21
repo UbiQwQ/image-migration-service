@@ -43,7 +43,6 @@ public class ImageMigrationController {
 
     @GetMapping("migration")
     public String migration(String url) {
-
-        return null;
+        return imageTempService.migration(url);
     }
 }
